@@ -1,16 +1,23 @@
 import React from 'react';
 
-function Weather() {
+function Weather({ city, country, mainTemp, maxTemp, minTemp, description }) {
   return (
     <div className="container">
       <div className="cards">
-        <h2>Lagos</h2>
+        {city ? (
+          <h2>
+            {city}, {country}
+          </h2>
+        ) : (
+          'Loading...'
+        )}
+
         <h5 className="py-4">
           <i className="wi wi-day-sunny display-3" />
         </h5>
-        <h2>25&deg;</h2>
-        {minMaxTemperature(23, 45)}
-        <h5>Slow Rain</h5>
+        <h2>{mainTemp}&deg;</h2>
+        {minMaxTemperature(maxTemp, minTemp)}
+        <h5>{description}</h5>
       </div>
     </div>
   );
