@@ -34,9 +34,9 @@ function App() {
           city: response.name,
           country: response.sys.country,
           icons: response.weather[0].main,
-          mainTemperature: response.main.temp,
-          maxTemperature: response.main.temp_max,
-          minTemperature: response.main.temp_min,
+          mainTemperature: KelvinToCelsius(response.main.temp),
+          maxTemperature: KelvinToCelsius(response.main.temp_max),
+          minTemperature: KelvinToCelsius(response.main.temp_min),
           weatherDescription: response.weather[0].description
         };
       });
@@ -44,6 +44,12 @@ function App() {
 
     getWeather();
   }, []);
+
+  // Converts temperature in Kelvin to Degree Celsius
+  const KelvinToCelsius = K => {
+    const Celsius = Math.floor(K - 273.15);
+    return Celsius;
+  };
 
   // destructure properties from state.
   const {
