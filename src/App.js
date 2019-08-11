@@ -1,14 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'weather-icons/css/weather-icons.css';
 import { useEffect, useState } from 'react';
 import './App.css';
 import Weather from './components/weather';
+import { setWeatherIcon } from './components/weather/iconGenerator';
 
 const initialState = {
   city: '',
   country: '',
-  icons: '',
+  icon: '',
   mainTemperature: '',
   maxTemperature: '',
   minTemperature: '',
@@ -31,9 +33,10 @@ function App() {
       // set the weather state to the values from API response
       setWeather(() => {
         return {
+          ...weather,
           city: response.name,
           country: response.sys.country,
-          icons: response.weather[0].main,
+          icon: response.weather[0].id,
           mainTemperature: KelvinToCelsius(response.main.temp),
           maxTemperature: KelvinToCelsius(response.main.temp_max),
           minTemperature: KelvinToCelsius(response.main.temp_min),
@@ -58,7 +61,8 @@ function App() {
     mainTemperature,
     maxTemperature,
     minTemperature,
-    weatherDescription
+    weatherDescription,
+    icon
   } = weather;
 
   return (
@@ -70,6 +74,7 @@ function App() {
         maxTemp={maxTemperature}
         minTemp={minTemperature}
         description={weatherDescription}
+        icon={setWeatherIcon(icon)}
       />
     </div>
   );
