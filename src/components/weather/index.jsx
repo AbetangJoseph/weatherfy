@@ -11,7 +11,7 @@ function Weather({
 }) {
   return (
     <div className="container">
-      <div className="cards">
+      <div className="cards pt-5">
         {city ? (
           <h2>
             {city}, {country}
