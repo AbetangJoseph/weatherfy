@@ -7,7 +7,7 @@ import './App.css';
 import Weather from './components/weather';
 import { setWeatherIcon } from './components/weather/iconGenerator';
 import Form from './components/form';
-import Swal from 'sweetalert2';
+import { showToast } from './helper/toaster';
 
 const initialState = {
   city: '',
@@ -34,8 +34,21 @@ function App() {
   const getWeather = async event => {
     event.preventDefault();
 
-    const city = event.target.city.value;
-    console.log(city);
+    // display toaster alert if any of the fields are empty
+    if (!input.city.trim() && !input.country.trim()) {
+      showToast('error', 'enter a city and country');
+      return;
+    }
+
+    if (!input.city.trim()) {
+      showToast('error', 'Enter City');
+      return;
+    }
+
+    if (!input.country.trim()) {
+      showToast('error', 'Enter Country');
+      return;
+    }
 
     const res = await fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${input.city},${
