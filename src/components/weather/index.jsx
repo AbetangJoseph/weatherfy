@@ -12,7 +12,7 @@ function Weather({
   return (
     <div className="container">
       <div className="cards pt-5">
-        {city ? (
+        {city && (
           <h2>
             {city}, {country}
           </h2>
@@ -23,7 +23,7 @@ function Weather({
         <h5 className="py-4">
           <i className={`wi ${icon} display-3`} />
         </h5>
-        <h2>{mainTemp}&deg;</h2>
+        {mainTemp && <h2>{mainTemp}&deg;</h2>}
         {minMaxTemperature(maxTemp, minTemp)}
         <h5>{description}</h5>
       </div>
