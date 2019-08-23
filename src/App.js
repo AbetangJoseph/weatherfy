@@ -24,8 +24,12 @@ function App() {
   const [weather, setWeather] = useState(initialState);
   const [input, setInput] = useState(initialInput);
 
-  useEffect(() => {
-    // call to openweathermap API.
+  const handleChange = event => {
+    event.preventDefault();
+    setInput({ ...input, [event.target.name]: event.target.value });
+  };
+
+  // call to openweathermap API.
     const getWeather = async () => {
       const res = await fetch(
         `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${
