@@ -47,6 +47,8 @@ function App() {
           weatherDescription: response.weather[0].description
         };
       });
+
+    setInput(initialInput);
     };
 
     getWeather();
