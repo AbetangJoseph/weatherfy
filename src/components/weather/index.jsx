@@ -16,8 +16,6 @@ function Weather({
           <h2>
             {city}, {country}
           </h2>
-        ) : (
-          'Loading...'
         )}
 
         <h5 className="py-4">
@@ -32,12 +30,14 @@ function Weather({
 }
 
 const minMaxTemperature = (min, max) => {
-  return (
-    <h4>
-      <span className="px-4">{min}&deg;</span>
-      <span className="px-4">{max}&deg;</span>
-    </h4>
-  );
+  if (max && min) {
+    return (
+      <h4>
+        <span className="px-4">{min}&deg;</span>
+        <span className="px-4">{max}&deg;</span>
+      </h4>
+    );
+  }
 };
 
 export default Weather;
