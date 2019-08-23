@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function Input({ name, placeholder, autoComplete }) {
+export default function Input({
+  name,
+  placeholder,
+  autoComplete,
+  change,
+  inputValue
+}) {
   return (
     <>
       <input
@@ -9,6 +15,8 @@ export default function Input({ name, placeholder, autoComplete }) {
         name={name}
         placeholder={placeholder}
         autoComplete={autoComplete}
+        onChange={change}
+        value={inputValue}
       />
     </>
   );
