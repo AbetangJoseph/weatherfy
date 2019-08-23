@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Weather from './components/weather';
 import { setWeatherIcon } from './components/weather/iconGenerator';
+import Form from './components/form';
 
 const initialState = {
   city: '',
@@ -82,6 +83,7 @@ function App() {
         description={weatherDescription}
         icon={setWeatherIcon(icon)}
       />
+      <Form loadWeather={getWeather} change={handleChange} inputValue={input} />
     </div>
   );
 }
