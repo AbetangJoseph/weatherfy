@@ -37,9 +37,9 @@ function App() {
     console.log(city);
 
     const res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${
-        process.env.REACT_APP_WEATHER_API_KEY
-      }`
+      `http://api.openweathermap.org/data/2.5/weather?q=${input.city},${
+        input.country
+      }&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     );
     const response = await res.json();
 
