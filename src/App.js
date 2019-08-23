@@ -30,34 +30,35 @@ function App() {
   };
 
   // call to openweathermap API.
-    const getWeather = async () => {
-      const res = await fetch(
-        `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${
-          process.env.REACT_APP_WEATHER_API_KEY
-        }`
-      );
-      const response = await res.json();
-      console.log(response);
+  const getWeather = async event => {
+    event.preventDefault();
 
-      // set the weather state to the values from API response
-      setWeather(() => {
-        return {
-          ...weather,
-          city: response.name,
-          country: response.sys.country,
-          icon: response.weather[0].id,
-          mainTemperature: KelvinToCelsius(response.main.temp),
-          maxTemperature: KelvinToCelsius(response.main.temp_max),
-          minTemperature: KelvinToCelsius(response.main.temp_min),
-          weatherDescription: response.weather[0].description
-        };
-      });
+    const city = event.target.city.value;
+    console.log(city);
+
+    const res = await fetch(
+      `http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${
+        process.env.REACT_APP_WEATHER_API_KEY
+      }`
+    );
+    const response = await res.json();
+
+    // set the weather state to the values from API response
+    setWeather(() => {
+      return {
+        ...weather,
+        city: response.name,
+        country: response.sys.country,
+        icon: response.weather[0].id,
+        mainTemperature: KelvinToCelsius(response.main.temp),
+        maxTemperature: KelvinToCelsius(response.main.temp_max),
+        minTemperature: KelvinToCelsius(response.main.temp_min),
+        weatherDescription: response.weather[0].description
+      };
+    });
 
     setInput(initialInput);
-    };
-
-    getWeather();
-  }, []);
+  };
 
   // Converts temperature in Kelvin to Degree Celsius
   const KelvinToCelsius = K => {
