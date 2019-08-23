@@ -7,6 +7,7 @@ import './App.css';
 import Weather from './components/weather';
 import { setWeatherIcon } from './components/weather/iconGenerator';
 import Form from './components/form';
+import Swal from 'sweetalert2';
 
 const initialState = {
   city: '',
