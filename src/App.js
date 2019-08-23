@@ -2,7 +2,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'weather-icons/css/weather-icons.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Weather from './components/weather';
 import { setWeatherIcon } from './components/weather/iconGenerator';
