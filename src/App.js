@@ -51,7 +51,7 @@ function App() {
     }
 
     const res = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=${input.city},${
+      `https://api.openweathermap.org/data/2.5/weather?q=${input.city},${
         input.country
       }&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
     );
