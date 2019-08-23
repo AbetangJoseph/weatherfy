@@ -16,8 +16,12 @@ const initialState = {
   minTemperature: '',
   weatherDescription: ''
 };
+
+const initialInput = { city: '', country: '' };
+
 function App() {
   const [weather, setWeather] = useState(initialState);
+  const [input, setInput] = useState(initialInput);
 
   useEffect(() => {
     // call to openweathermap API.
